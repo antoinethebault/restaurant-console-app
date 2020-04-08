@@ -16,7 +16,7 @@ public class AppSpringJava {
 		
 		// récupération du bean Menu
 		Menu menu = context.getBean(Menu.class);
-		menu.afficher();
+		menu.afficher(context);
 		
 		// fermeture du Scanner
 		context.getBean(Scanner.class).close(); // fermeture du contexte Spring
