@@ -10,6 +10,8 @@ import java.nio.file.StandardOpenOption;
 import java.util.Collections;
 import java.util.List;
 
+import org.springframework.stereotype.Component;
+
 import static java.util.stream.Collectors.toList;
 
 public class PlatDaoFichier implements IPlatDao {
