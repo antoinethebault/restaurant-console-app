@@ -9,6 +9,7 @@ public class OptionListerPlats implements IOptionMenu {
 
     private IPlatService service;
 
+    
     public OptionListerPlats(IPlatService service) {
         this.service = service;
     }

@@ -11,7 +11,6 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Scanner;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.stereotype.Component;
 
@@ -24,36 +23,29 @@ public class Menu {
     private Scanner scanner;
     AnnotationConfigApplicationContext context;
 
-
-    public Menu(Scanner scanner, IPlatService service) {
-        actions.put(1, new OptionListerPlats(service));
-        //actions.put(1, context.getBean("optionListerPlats",IOptionMenu.class));
-        actions.put(2, new OptionAjouterPlat(scanner, service));
-        //actions.put(2, context.getBean("optionAjouterPlats",IOptionMenu.class));
-        actions.put(99, new OptionTerminer());
-        //actions.put(99, context.getBean("optionTerminer",IOptionMenu.class));
+//    public Menu(Scanner scanner, IPlatService service) {
+//        actions.put(1, new OptionListerPlats(service));
+//        //actions.put(1, context.getBean("optionListerPlats",IOptionMenu.class));
+//        actions.put(2, new OptionAjouterPlat(scanner, service));
+//        //actions.put(2, context.getBean("optionAjouterPlats",IOptionMenu.class));
+//        actions.put(99, new OptionTerminer());
+//        //actions.put(99, context.getBean("optionTerminer",IOptionMenu.class));
+//        this.scanner = scanner;
+//    }
+    
+    
+    public Menu(Scanner scanner, IPlatService service, AnnotationConfigApplicationContext context) {
+        this.context = context;
+    	OptionListerPlats optionListerPlats = context.getBean(OptionListerPlats.class);
+    	if (optionListerPlats != null)
+    		actions.put(1, optionListerPlats);
+    	OptionAjouterPlat optionAjouterPlat = context.getBean(OptionAjouterPlat.class);
+    	if (optionAjouterPlat != null)
+    		actions.put(2, optionAjouterPlat);
+    	OptionTerminer optionTerminer = context.getBean(OptionTerminer.class);
+    	if (optionTerminer != null)
+    		actions.put(99, optionTerminer);
         this.scanner = scanner;
-    }
-
-    public void afficher(AnnotationConfigApplicationContext context) {
-
-    	this.context = context;
-    	
-        boolean continuer = true;
-
-        while (continuer) {
-
-            System.out.println(getMenuTexte());
-
-            int choix = this.scanner.nextInt();
-
-            try {
-                this.actions.get(choix).executer();
-            } catch (PlatException e) {
-                continuer = false;
-                System.out.println(e.getMessage());
-            }
-        }
     }
     
     public void afficher() {

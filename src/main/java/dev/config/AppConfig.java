@@ -6,13 +6,10 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
-import org.springframework.beans.factory.annotation.Value;
-
-import dev.dao.PlatDaoFichier;
 
 //Le stéréotype @Configuration précise que cette classe servira de configuration.
 @Configuration
-@ComponentScan({"dev.ihm", "dev.service","dev.dao"})
+@ComponentScan({"dev.ihm", "dev.service", "dev.dao", "dev.ihm.options"})
 @PropertySource("app.properties")
 public class AppConfig {
 	@Bean
