@@ -36,15 +36,15 @@ public class Menu {
     
     public Menu(Scanner scanner, IPlatService service, AnnotationConfigApplicationContext context) {
         this.context = context;
-    	OptionListerPlats optionListerPlats = context.getBean(OptionListerPlats.class);
-    	if (optionListerPlats != null)
-    		actions.put(1, optionListerPlats);
-    	OptionAjouterPlat optionAjouterPlat = context.getBean(OptionAjouterPlat.class);
-    	if (optionAjouterPlat != null)
-    		actions.put(2, optionAjouterPlat);
-    	OptionTerminer optionTerminer = context.getBean(OptionTerminer.class);
-    	if (optionTerminer != null)
-    		actions.put(99, optionTerminer);
+        Map<String, OptionListerPlats> map1 = context.getBeansOfType(OptionListerPlats.class);
+    	if (!map1.isEmpty())
+    		actions.put(1, (OptionListerPlats) map1.get("optionListerPlats"));
+    	Map<String, OptionAjouterPlat> map2 = context.getBeansOfType(OptionAjouterPlat.class);
+    	if (!map2.isEmpty())
+    		actions.put(2, (OptionAjouterPlat) map2.get("optionAjouterPlat"));
+    	Map<String, OptionTerminer> map3  = context.getBeansOfType(OptionTerminer.class);
+    	if (!map3.isEmpty())
+    		actions.put(99, (OptionTerminer) map3.get("optionTerminer"));
         this.scanner = scanner;
     }
     
