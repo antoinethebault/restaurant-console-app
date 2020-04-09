@@ -19,8 +19,7 @@ class PlatDaoMemoireTest {
 
 	@Test
 	void testListerPlatsVideALInitialisation() {
-		List<Plat> listePlatsVide = new ArrayList<>();
-		assertThat(platDaoMemoire.listerPlats()).isEqualTo(listePlatsVide);
+		assertThat(platDaoMemoire.listerPlats()).isEmpty();
 	}
 
 	@Test
