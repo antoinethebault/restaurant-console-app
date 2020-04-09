@@ -13,6 +13,7 @@ import org.junit.jupiter.api.Test;
 
 import dev.dao.IPlatDao;
 import dev.entite.Plat;
+import dev.exception.PlatException;
 
 class PlatServiceVersion1Test {
 
@@ -30,7 +31,8 @@ class PlatServiceVersion1Test {
 		
 		assertThatThrownBy(() -> {
 			platService.ajouterPlat("xx", 1000);
-		}).hasMessage("un plat doit avoir un nom de plus de 3 caractères");
+		})	.isInstanceOf(PlatException.class)
+			.hasMessage("un plat doit avoir un nom de plus de 3 caractères");
 		
 	}
 	
@@ -39,12 +41,14 @@ class PlatServiceVersion1Test {
 		
 		assertThatThrownBy(() -> {
 			platService.ajouterPlat("Plat", 300);
-		}).hasMessage("le prix d'un plat doit être supérieur à 5 €");
+		})	.isInstanceOf(PlatException.class)
+			.hasMessage("le prix d'un plat doit être supérieur à 5 €");
 		
 	}
 	
 	@Test
 	void testAjouterPlatValide() {
+		
 		platService.ajouterPlat("Plat", 600);
 		verify(platDao).ajouterPlat("Plat", 600);
 		
