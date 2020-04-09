@@ -12,9 +12,9 @@ import java.util.Map;
 import java.util.Scanner;
 
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Controller;
 
-@Component
+@Controller
 public class Menu {
 
     private Map<Integer, IOptionMenu> actions = new HashMap<>();
