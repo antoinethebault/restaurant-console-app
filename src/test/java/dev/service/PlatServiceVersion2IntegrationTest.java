@@ -36,6 +36,7 @@ class PlatServiceVersion2IntegrationTest {
 		LOGGER.info("Alors le plat recupere doit etre le meme que celui ajoute");
 		Plat platAttendu = new Plat("Plat 1", 1500);
 		assertThat(platFourni).isEqualTo(platAttendu);
+
 	}
 
 	@Test
