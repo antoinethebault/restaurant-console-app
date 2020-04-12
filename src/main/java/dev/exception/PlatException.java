@@ -2,22 +2,25 @@ package dev.exception;
 
 public class PlatException extends RuntimeException {
 
-    public PlatException() {
-    }
+	/** serialVersionUID : long */
+	private static final long serialVersionUID = 5287545431076389727L;
 
-    public PlatException(String message) {
-        super(message);
-    }
+	public PlatException() {
+	}
 
-    public PlatException(String message, Throwable cause) {
-        super(message, cause);
-    }
+	public PlatException(String message) {
+		super(message);
+	}
 
-    public PlatException(Throwable cause) {
-        super(cause);
-    }
+	public PlatException(String message, Throwable cause) {
+		super(message, cause);
+	}
 
-    public PlatException(String message, Throwable cause, boolean enableSuppression, boolean writableStackTrace) {
-        super(message, cause, enableSuppression, writableStackTrace);
-    }
+	public PlatException(Throwable cause) {
+		super(cause);
+	}
+
+	public PlatException(String message, Throwable cause, boolean enableSuppression, boolean writableStackTrace) {
+		super(message, cause, enableSuppression, writableStackTrace);
+	}
 }
