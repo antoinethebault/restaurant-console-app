@@ -12,7 +12,7 @@ import org.springframework.context.annotation.PropertySource;
 @Configuration
 @ComponentScan({ "dev.ihm", "dev.service", "dev.dao", "dev.ihm.options" })
 @PropertySource("app.properties")
-@Import(DataSourceConfig.class)
+@Import({ DataSourceConfig.class, JpaConfig.class })
 public class AppConfig {
 	@Bean
 	public Scanner scanner() {
