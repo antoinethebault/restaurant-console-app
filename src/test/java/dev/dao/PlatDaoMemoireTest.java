@@ -1,13 +1,14 @@
 package dev.dao;
 
-import static org.assertj.core.api.Assertions.*;
+import static org.assertj.core.api.Assertions.assertThat;
 
 import java.util.ArrayList;
 import java.util.List;
-import dev.entite.Plat;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+
+import dev.entite.Plat;
 
 class PlatDaoMemoireTest {
 	private PlatDaoMemoire platDaoMemoire;
@@ -24,14 +25,17 @@ class PlatDaoMemoireTest {
 
 	@Test
 	void testAjouterPlatCasPassants() {
+		// on cree une liste de plats qu'on s'attend a recuperer
 		List<Plat> listePlats = new ArrayList<>();
 		listePlats.add(new Plat("Plat 1", 1000));
 		listePlats.add(new Plat("Plat 2", 1200));
-		
+
+		// on ajoute les plats a la memoire
 		platDaoMemoire.ajouterPlat("Plat 1", 1000);
 		platDaoMemoire.ajouterPlat("Plat 2", 1200);
-		
+
+		// on compare les deux listes qui doivent etre identiques
 		assertThat(platDaoMemoire.listerPlats()).isEqualTo(listePlats);
-		
+
 	}
 }
